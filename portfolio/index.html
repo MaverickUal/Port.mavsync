@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport tag makes the page scale correctly on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Terminal-style personal portfolio of Your Name, a student developer.">
+  <title>Your Name | Portfolio</title>
+  <!-- Monospace font (fallbacks are set in style.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+
+  <!-- Loading screen: terminal boot sequence (see script.js) -->
+  <div id="loader" class="loader" role="status" aria-live="polite">
+    <div class="boot">
+      <pre id="boot-log" class="boot-log"></pre>
+      <p id="boot-bar" class="boot-bar">[--------------------] 0%</p>
+    </div>
+  </div>
+
+  <!-- Animated purple lines background (decorative) -->
+  <canvas id="rain" class="rain" aria-hidden="true"></canvas>
+
+  <!-- 1. Header / Navigation -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home" class="brand">Maverick Ual<span class="cursor" aria-hidden="true"></span></a>
+
+      <!-- Hamburger button: visible on mobile only -->
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#home">./home</a></li>
+        <li><a href="#projects">./projects</a></li>
+        <li><a href="#contact">./contact</a></li>
+        <li><button id="theme-toggle" class="theme-toggle" type="button">theme: dark</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+   
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <p class="prompt">Maverickual@gmail.com</p>
+        <h1>Maverick Ual<span class="cursor cursor-big" aria-hidden="true"></span></h1>
+    
+        <p class="role">// <span id="typed">Full Stack Developer</span></p>
+        <p class="bio">Information Technology student building practical, user-friendly websites and Mobile apps. I work with HTML, CSS, JavaScript, and Git, along side with other languages such as React, Dart and I like turning ideas into working pages. Outside of class, I enjoy Playing video games Such as Valorant and more.</p>
+        <div class="actions">
+          <a href="#projects" class="btn btn-solid"><span class="dim">$</span> cd ./projects</a>
+          <a href="#contact" class="btn"><span class="dim">$</span> cat contact.txt</a>
+        </div>
+      </div>
+
+
+      <!-- Code-editor panel with tabs: profile code and photo -->
+      <aside class="editor" aria-label="Profile panel">
+        <div class="editor-top">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="editor-title">portfolio-code</span>
+        </div>
+        <div class="tabs" role="tablist">
+          <button class="tab active" role="tab" id="tab-code" aria-selected="true" aria-controls="pane-code" type="button">profile.js</button>
+          <button class="tab" role="tab" id="tab-photo" aria-selected="false" aria-controls="pane-photo" type="button">photo.png</button>
+        </div>
+
+        <div id="pane-code" class="pane" role="tabpanel" aria-labelledby="tab-code">
+          <ol class="code">
+            <li>export const profile = {</li>
+            <li>&nbsp;&nbsp;name: "<b>Maverick Ual</b>",</li>
+            <li>&nbsp;&nbsp;role: "<b>Full Stack Developer</b>",</li>
+            <li>&nbsp;&nbsp;status: "<b>open to projects</b>",</li>
+            <li>&nbsp;&nbsp;email: "<b>maverickual@gmail.com</b>",</li>
+            <li>};</li>
+          </ol>
+        </div>
+
+        <div id="pane-photo" class="pane" role="tabpanel" aria-labelledby="tab-photo" hidden>
+          <img src="images/profile.jpg" alt="Portrait placeholder of Your Name" class="photo" width="320" height="320">
+        </div>
+
+        <div class="editor-status"><span>main</span><span>UTF-8 · JAVASCRIPT</span></div>
+      </aside>
+    </section>
+
+    <!-- 3. Projects -->
+    <section id="projects" class="projects">
+      <p class="prompt reveal">$ ls ./projects</p>
+      <h2 class="reveal">./selected-work</h2>
+      <div class="card-grid">
+
+        <article class="card reveal">
+          <div class="card-bar"><span>project@portfolio:~/work$ cat portfolio.json</span><span>published</span></div>
+          <div class="card-shot" aria-hidden="true"> <img src="images/Pesonal Porfolio.png" alt="Portrait placeholder of Your Name" class="photo" width="320" height="320"></div>
+          <div class="card-body">
+            <h3>Personal Portfolio</h3>
+            <p>A responsive one-page site with a terminal theme, a mobile menu, a dark and light mode, and scroll animations.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <p class="links"><a href="#home">[ live ]</a> <a href="https://github.com/MaverickUal" target="_blank" rel="noopener">[ code ]</a></p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-bar"><span>project@portfolio:~/work$ cat InnSync.json</span><span>published</span></div>
+          <div class="card-shot" aria-hidden="true"><img src="images/innsynclanding.png" alt="Portrait placeholder of Your Name" class="photo" width="320" height="320"></div>
+          <div class="card-body">
+            <h3>InnSync Hotel Reservation System</h3>
+            <p>InnSync is a web-based hotel management and reservation system designed to address these challenges. It
+provides a complete digital platform where customers can register, browse available rooms, make
+reservations, submit payments, and track their booking status all without the need for in-person interactions.
+</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <p class="links"><a href="#projects">[ live ]</a> <a href="https://github.com/MaverickUal" target="_blank" rel="noopener">[ code ]</a></p>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-bar"><span>project@portfolio:~/work$ cat task-tracker.json</span><span>sample</span></div>
+          <div class="card-shot" aria-hidden="true"><img src="images/googleauth.jpg" alt="Portrait placeholder of Your Name" class="photo" width="320" height="320"></div>
+          <div class="card-body">
+            <h3>Task Tracker</h3>
+            <p>A simple login page with Google authentication integration. Using modern web technologies to create a seamless user experience.</p>
+            <ul class="tags"><li>JavaScript</li><li>DOM</li></ul>
+            <p class="links"><a href="#projects">[ live ]</a> <a href="https://github.com/MaverickUal" target="_blank" rel="noopener">[ code ]</a></p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- 4. Footer / Contact -->
+  <footer id="contact" class="site-footer">
+    <p class="prompt reveal">$ cat contact.txt</p>
+    <h2 class="reveal">./contact</h2>
+    <ul class="contact-list reveal">
+      <li><span class="dim">email:</span> <a href="mailto:MaverickUal@gmail.com">MaverickUal@gmail.com</a></li>
+      <li><span class="dim">github:</span> <a href="https://github.com/MaverickUal" target="_blank" rel="noopener">https://github.com/MaverickUal</a></li>
+      <li><span class="dim">facebook:</span> <a href="https://www.facebook.com/mav.ual.2024" target="_blank" rel="noopener">https://www.facebook.com/mav.ual.2024</a></li>
+    </ul>
+    <p class="copyright">&copy; 2026 Your Name. exit 0</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
