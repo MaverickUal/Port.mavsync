@@ -2,11 +2,11 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <!-- Viewport tag makes the page scale correctly on phones -->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Terminal-style personal portfolio of Your Name, a student developer.">
   <title>Your Name | Portfolio</title>
-  <!-- Monospace font (fallbacks are set in style.css) -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 </head>
 <body class="loading">
 
-  <!-- Loading screen: terminal boot sequence (see script.js) -->
+
   <div id="loader" class="loader" role="status" aria-live="polite">
     <div class="boot">
       <pre id="boot-log" class="boot-log"></pre>
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <!-- Animated purple lines background (decorative) -->
+  
   <canvas id="rain" class="rain" aria-hidden="true"></canvas>
 
   <!-- 1. Header / Navigation -->
@@ -30,7 +30,7 @@
     <nav class="nav" aria-label="Main navigation">
       <a href="#home" class="brand">Maverick Ual<span class="cursor" aria-hidden="true"></span></a>
 
-      <!-- Hamburger button: visible on mobile only -->
+      
       <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
@@ -60,7 +60,7 @@
       </div>
 
 
-      <!-- Code-editor panel with tabs: profile code and photo -->
+      
       <aside class="editor" aria-label="Profile panel">
         <div class="editor-top">
           <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -90,7 +90,7 @@
       </aside>
     </section>
 
-    <!-- 3. Projects -->
+   
     <section id="projects" class="projects">
       <p class="prompt reveal">$ ls ./projects</p>
       <h2 class="reveal">./selected-work</h2>
@@ -122,12 +122,50 @@ reservations, submit payments, and track their booking status all without the ne
         </article>
 
         <article class="card reveal">
-          <div class="card-bar"><span>project@portfolio:~/work$ cat task-tracker.json</span><span>sample</span></div>
+          <div class="card-bar"><span>project@portfolio:~/work$ cat googleauth.json</span><span>sample</span></div>
           <div class="card-shot" aria-hidden="true"><img src="images/googleauth.jpg" alt="Portrait placeholder of Your Name" class="photo" width="320" height="320"></div>
           <div class="card-body">
-            <h3>Task Tracker</h3>
+            <h3>Google Authentication</h3>
             <p>A simple login page with Google authentication integration. Using modern web technologies to create a seamless user experience.</p>
             <ul class="tags"><li>JavaScript</li><li>DOM</li></ul>
+            <p class="links"><a href="#projects">[ live ]</a> <a href="https://github.com/MaverickUal" target="_blank" rel="noopener">[ code ]</a></p>
+          </div>
+        </article>
+
+
+ <article class="card reveal">
+          <div class="card-bar"><span>project@portfolio:~/work$ cat MavilogPos.json</span><span>sample</span></div>
+          <div class="card-shot" aria-hidden="true"><img src="images/mavilogpos.png" alt="Portrait placeholder of Your Name" class="photo" width="320" height="320"></div>
+          <div class="card-body">
+            <h3>MavilogPos</h3>
+            <p>A full Stack Web Application (POS) for managing and tracking orders with real-time ordering system and updates for Mavliog.</p>
+            <ul class="tags"><li>JavaScript</li><li>HTML</li><li>CSS</li><li>DOM</li></ul>
+            <p class="links"><a href="#projects">[ live ]</a> <a href="https://github.com/MaverickUal" target="_blank" rel="noopener">[ code ]</a></p>
+          </div>
+        </article>
+
+
+
+         <article class="card reveal">
+          <div class="card-bar"><span>project@portfolio:~/work$ cat CrizpetInvoice.json</span><span>sample</span></div>
+          <div class="card-shot" aria-hidden="true"><img src="images/crizpets.png" alt="Portrait placeholder of Your Name" class="photo" width="320" height="320"></div>
+          <div class="card-body">
+            <h3>Crizpet invoice Generator</h3>
+            <p>A simple invoice generator for Crizpet, built with modern web technologies.</p>
+            <ul class="tags"><li>JavaScript</li><li>HTML</li><li>CSS</li></ul>
+            <p class="links"><a href="#projects">[ live ]</a> <a href="https://github.com/MaverickUal" target="_blank" rel="noopener">[ code ]</a></p>
+          </div>
+        </article>
+
+
+        
+         <article class="card reveal">
+          <div class="card-bar"><span>project@portfolio:~/work$ cat Cuccupos.json</span><span>sample</span></div>
+          <div class="card-shot" aria-hidden="true"><img src="images/cuccpos.jpg" alt="Portrait placeholder of Your Name" class="photo" width="320" height="320"></div>
+          <div class="card-body">
+            <h3>Cuccupos</h3>
+            <p>A Full-Stack Web Application (POS) for managing and tracking orders with real-time ordering system and updates For Cuccu.</p>
+            <ul class="tags"><li>JavaScript</li><li>HTML</li><li>CSS</li></ul>
             <p class="links"><a href="#projects">[ live ]</a> <a href="https://github.com/MaverickUal" target="_blank" rel="noopener">[ code ]</a></p>
           </div>
         </article>
@@ -135,8 +173,18 @@ reservations, submit payments, and track their booking status all without the ne
       </div>
     </section>
   </main>
+      </div>
+    </section>
+  </main>
 
-  <!-- 4. Footer / Contact -->
+
+      </div>
+    </section>
+  </main>
+
+         
+
+ 
   <footer id="contact" class="site-footer">
     <p class="prompt reveal">$ cat contact.txt</p>
     <h2 class="reveal">./contact</h2>

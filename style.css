@@ -1,4 +1,4 @@
-/* ---------- Color tokens: black terminal (dark) and paper terminal (light) ---------- */
+
 :root {
   --bg: #000000;
   --bg-rgb: 0, 0, 0;
@@ -6,12 +6,12 @@
   --text: #f2f2f2;
   --muted: #9b9b9b;
   --border: #2b2b2b;
-  --solid-bg: #f2f2f2;       /* filled button */
+  --solid-bg: #f2f2f2;       
   --solid-text: #000000;
-  --rain-rgb: 168, 85, 247;  /* animated background lines (purple) */
+  --rain-rgb: 168, 85, 247;  
 }
 
-/* script.js switches data-theme on <html> */
+
 :root[data-theme="light"] {
   --bg: #f6f6f3;
   --bg-rgb: 246, 246, 243;
@@ -24,7 +24,7 @@
   --rain-rgb: 124, 58, 237;
 }
 
-/* ---------- Base ---------- */
+
 * { box-sizing: border-box; }
 html { scroll-padding-top: 4.5rem; }
 
@@ -37,14 +37,14 @@ body {
   overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
 }
-body.loading { overflow: hidden; } /* no scrolling during the boot screen */
+body.loading { overflow: hidden; } 
 
 h1, h2, h3 { margin: 0 0 0.75rem; line-height: 1.15; }
 a { color: var(--text); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
 .dim { color: var(--muted); }
 
-/* Animated purple lines canvas sits behind everything */
+
 .rain {
   position: fixed;
   inset: 0;
@@ -54,7 +54,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
   opacity: 0.8;
 }
 
-/* Blinking block cursor */
+
 .cursor {
   display: inline-block;
   width: 0.55em;
@@ -68,7 +68,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
 
 .prompt { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
 
-/* ---------- Header / Navigation (Flexbox) ---------- */
+
 .site-header {
   position: sticky;
   top: 0;
@@ -90,7 +90,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
 .nav-links { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 1.75rem; }
 .nav-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--text); }
-/* "> " appears in front of a hovered link */
+
 .nav-links a::before { content: "> "; opacity: 0; transition: opacity 0.2s; }
 .nav-links a:hover::before { opacity: 1; }
 
@@ -106,14 +106,14 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
 }
 .theme-toggle:hover { background: var(--solid-bg); color: var(--solid-text); }
 
-/* Hamburger (mobile only) turns into an X when open */
+
 .menu-toggle { display: none; background: none; border: none; padding: 0.4rem; cursor: pointer; }
 .menu-toggle span { display: block; width: 24px; height: 2px; margin: 6px 0; background: var(--text); transition: transform 0.3s, opacity 0.3s; }
 .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* ---------- Hero (Flexbox) ---------- */
+
 .hero {
   max-width: 1100px;
   margin: 0 auto;
@@ -142,7 +142,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
 .btn-solid { background: var(--solid-bg); color: var(--solid-text); border-color: var(--solid-bg); }
 .btn-solid .dim { color: inherit; opacity: 0.6; }
 
-/* ---------- Code editor panel ---------- */
+
 .editor {
   flex: 0 1 420px;
   min-width: 0;
@@ -172,11 +172,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
 .code { margin: 0; padding: 0 0 0 2.2rem; overflow-x: auto; white-space: pre; color: var(--muted); }
 .code li::marker { color: var(--border); }
 .code b { color: var(--text); }
-/* Photos are shown in their original colors */
+
 .photo { display: block; width: 100%; max-width: 230px; height: auto; margin: 0 auto; border: 1px solid var(--border); }
 .editor-status { display: flex; justify-content: space-between; padding: 0.4rem 0.9rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.75rem; }
 
-/* ---------- Projects (Grid) ---------- */
+
 .projects { max-width: 1100px; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
 .projects h2, .site-footer h2 { font-size: clamp(1.8rem, 5vw, 3rem); }
 
@@ -199,7 +199,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
   background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 24px 24px;
 }
-/* Project screenshots fill the whole card image area */
+
 .card-shot { overflow: hidden; }
 .card-shot .photo { width: 100%; height: 100%; max-width: none; margin: 0; border: 0; object-fit: cover; }
 .card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
@@ -213,22 +213,22 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
 .links a { text-decoration: none; margin-right: 1rem; font-weight: 500; }
 .links a:hover { text-decoration: underline; }
 
-/* Card lifts when hovered */
+
 .card { transition: transform 0.25s, border-color 0.25s, opacity 0.7s; }
 .card:hover { transform: translateY(-6px); border-color: var(--text); }
 
-/* ---------- Footer / Contact ---------- */
+
 .site-footer { max-width: 1100px; margin: 0 auto; padding: 3rem 1.25rem 2rem; border-top: 1px solid var(--border); }
 .contact-list { list-style: none; padding: 0; margin: 1rem 0 2rem; }
 .contact-list li { margin-bottom: 0.4rem; overflow-wrap: anywhere; }
 .copyright { color: var(--muted); font-size: 0.85rem; margin: 0; }
 
-/* ---------- Scroll reveal (script.js adds .visible) ---------- */
+
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.25s; }
 .reveal.visible { opacity: 1; transform: none; }
 .card.reveal.visible:hover { transform: translateY(-6px); }
 
-/* ---------- Loading screen (terminal boot) ---------- */
+
 .loader {
   position: fixed;
   inset: 0;
@@ -239,20 +239,20 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
   background: var(--bg);
   transition: opacity 0.6s ease, visibility 0.6s;
 }
-.loader.done { opacity: 0; visibility: hidden; } /* added by script.js */
+.loader.done { opacity: 0; visibility: hidden; } 
 .boot { width: min(520px, 90vw); }
 .boot-log { margin: 0 0 1rem; min-height: 9.5em; font: inherit; font-size: 0.9rem; color: var(--muted); white-space: pre-wrap; }
 .boot-bar { margin: 0; font-weight: 700; }
 
-/* ---------- Keyframes ---------- */
+
 @keyframes blink { 50% { opacity: 0; } }
 @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-/* ---------- Mobile layout (max width 800px) ---------- */
+
 @media (max-width: 800px) {
   .menu-toggle { display: block; }
 
-  /* Nav links become a dropdown panel under the header */
+  
   .nav-links {
     display: none;
     position: absolute;
@@ -272,7 +272,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--text); outline-
   .editor { flex: none; }
 }
 
-/* Turn off animations for people who prefer reduced motion */
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }

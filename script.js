@@ -1,35 +1,22 @@
-/* script.js
-   Interactive features:
-   1. Dark / light theme toggle (remembers choice)
-   2. Hamburger menu for mobile
-   3. Smooth scrolling for anchor links
-   4. Typing effect in the hero
-   5. Editor tabs (profile.js / photo.png)
-   6. Scroll reveal animations
-   7. Animated purple lines background
-   8. Terminal boot loading screen (runs first)
-*/
-
-// Grab the elements we need from the page
 const root = document.documentElement;
 const themeButton = document.getElementById("theme-toggle");
 const menuButton = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 const typedEl = document.getElementById("typed");
 
-// True if the visitor asked their device for less motion
+
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ---------- 1. Dark / light theme ---------- */
 
-// Apply a theme ("dark" or "light") and update the button label
+
+
 function applyTheme(theme) {
   root.setAttribute("data-theme", theme);
   themeButton.textContent = "theme: " + theme;
   updateRainColors(); // keep the background effect in sync
 }
 
-// Load the saved theme, or fall back to dark
+
 function loadTheme() {
   let saved = "dark";
   try {
@@ -40,26 +27,26 @@ function loadTheme() {
   applyTheme(saved);
 }
 
-// Switch themes when the button is clicked
+
 themeButton.addEventListener("click", function () {
   const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
   applyTheme(next);
   try {
     localStorage.setItem("theme", next);
   } catch (e) {
-    // Ignore storage errors
+  
   }
 });
 
-/* ---------- 2. Hamburger menu ---------- */
 
-// Show or hide the nav links on small screens
+
+
 menuButton.addEventListener("click", function () {
   const isOpen = navLinks.classList.toggle("open");
   menuButton.setAttribute("aria-expanded", String(isOpen));
 });
 
-// Close the menu after a link is chosen
+
 navLinks.querySelectorAll("a").forEach(function (link) {
   link.addEventListener("click", function () {
     navLinks.classList.remove("open");
@@ -67,9 +54,9 @@ navLinks.querySelectorAll("a").forEach(function (link) {
   });
 });
 
-/* ---------- 3. Smooth scroll ---------- */
 
-// Scroll smoothly to the section an anchor link points to
+
+
 document.querySelectorAll('a[href^="#"]').forEach(function (link) {
   link.addEventListener("click", function (event) {
     const target = document.querySelector(link.getAttribute("href"));
@@ -80,15 +67,13 @@ document.querySelectorAll('a[href^="#"]').forEach(function (link) {
   });
 });
 
-/* ---------- 4. Typing effect ---------- */
 
-// Edit these phrases to describe yourself
 const phrases = ["Full Stack Developer", "Web Designer ", "App  Developer", "BULSU Student", "Information Technology Student"];
 let phraseIndex = 0;
 let charIndex = phrases[0].length;
 let deleting = true;
 
-// Type or delete one letter, then schedule the next step
+
 function typeStep() {
   const current = phrases[phraseIndex];
   charIndex += deleting ? -1 : 1;
@@ -96,28 +81,28 @@ function typeStep() {
 
   let delay = deleting ? 45 : 85;
   if (!deleting && charIndex === current.length) {
-    deleting = true;      // finished typing: pause, then delete
+    deleting = true;    
     delay = 1800;
   } else if (deleting && charIndex === 0) {
-    deleting = false;     // finished deleting: go to the next phrase
+    deleting = false;    
     phraseIndex = (phraseIndex + 1) % phrases.length;
     delay = 350;
   }
   setTimeout(typeStep, delay);
 }
 
-// Start typing (called once the loading screen is gone)
+
 function startTyping() {
   if (!reducedMotion) {
     setTimeout(typeStep, 1500);
   }
 }
 
-/* ---------- 5. Editor tabs ---------- */
+
 
 const tabs = document.querySelectorAll(".tab");
 
-// Show the pane that belongs to the clicked tab and hide the others
+
 tabs.forEach(function (tab) {
   tab.addEventListener("click", function () {
     tabs.forEach(function (t) {
@@ -129,15 +114,15 @@ tabs.forEach(function (tab) {
   });
 });
 
-/* ---------- 6. Scroll reveal ---------- */
 
-// Fade elements in once they scroll into view
+
+
 const revealItems = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry, i) {
       if (entry.isIntersecting) {
-        // Small stagger so cards appear one after another
+        
         setTimeout(function () { entry.target.classList.add("visible"); }, i * 120);
         observer.unobserve(entry.target);
       }
@@ -145,24 +130,24 @@ if ("IntersectionObserver" in window) {
   }, { threshold: 0.15 });
   revealItems.forEach(function (item) { observer.observe(item); });
 } else {
-  // Old browsers: just show everything
+
   revealItems.forEach(function (item) { item.classList.add("visible"); });
 }
 
-/* ---------- 7. Animated purple lines background ---------- */
+
 
 const canvas = document.getElementById("rain");
 const ctx = canvas.getContext("2d");
-const lineCount = 16;      // how many flowing lines to draw
-let lineColor = "168, 85, 247"; // purple, replaced by --rain-rgb from style.css
+const lineCount = 16;      
+let lineColor = "168, 85, 247"; 
 
-// Read the current theme's line color from the CSS variable
+
 function updateRainColors() {
   const styles = getComputedStyle(root);
   lineColor = styles.getPropertyValue("--rain-rgb").trim() || lineColor;
 }
 
-// Match the canvas size to the window (and redraw once if motion is reduced)
+
 function resizeRain() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -170,7 +155,7 @@ function resizeRain() {
   if (reducedMotion) drawLines(0);
 }
 
-// Draw one frame of wavy lines; "time" (in seconds) moves them along
+
 function drawLines(time) {
   const w = canvas.width;
   const h = canvas.height;
@@ -189,14 +174,14 @@ function drawLines(time) {
         + Math.sin(x * 0.011 - time * 0.45 + i * 0.8) * amp * 0.35;
       if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
     }
-    // Lines near the middle are brighter, the outer ones fade out
+    
     const alpha = 0.18 + 0.5 * Math.sin(t * Math.PI);
     ctx.strokeStyle = "rgba(" + lineColor + ", " + alpha.toFixed(2) + ")";
     ctx.stroke();
   }
 }
 
-// Animation loop
+
 function animateRain(timestamp) {
   drawLines(timestamp / 1000);
   requestAnimationFrame(animateRain);
@@ -204,13 +189,13 @@ function animateRain(timestamp) {
 
 window.addEventListener("resize", resizeRain);
 
-/* ---------- 8. Terminal boot loading screen ---------- */
+
 
 const loader = document.getElementById("loader");
 const bootLog = document.getElementById("boot-log");
 const bootBar = document.getElementById("boot-bar");
 
-// Log lines appear when the progress reaches their "at" value
+
 const bootLines = [
   { at: 0,  text: "> booting portfolio v1.0" },
   { at: 15, text: "> loading style.css ........ ok" },
@@ -221,16 +206,16 @@ const bootLines = [
 ];
 let nextLine = 0;
 
-// Hide the loading screen and let the page scroll and animate
+
 function finishLoading() {
   loader.classList.add("done");
   document.body.classList.remove("loading");
   startTyping();
 }
 
-// Fill the progress bar to 100%, printing log lines along the way
+
 function runLoader() {
-  // Skip the animation for visitors who prefer reduced motion
+
   if (reducedMotion) {
     finishLoading();
     return;
@@ -238,16 +223,16 @@ function runLoader() {
 
   let progress = 0;
   const timer = setInterval(function () {
-    // Move forward by a random amount so it feels like real loading
+
     progress = Math.min(100, progress + Math.random() * 8 + 3);
 
-    // Print any log lines that are due
+ 
     while (nextLine < bootLines.length && progress >= bootLines[nextLine].at) {
       bootLog.textContent += bootLines[nextLine].text + "\n";
       nextLine++;
     }
 
-    // Draw the text progress bar, e.g. [#########-----------] 45%
+  
     const filled = Math.floor(progress / 5);
     bootBar.textContent = "[" + "#".repeat(filled) + "-".repeat(20 - filled) + "] " + Math.floor(progress) + "%";
 
@@ -258,7 +243,7 @@ function runLoader() {
   }, 120);
 }
 
-// Start everything: theme, background, then the loading screen
+
 loadTheme();
 resizeRain();
 if (!reducedMotion) {
